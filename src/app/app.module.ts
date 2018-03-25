@@ -3,11 +3,17 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { StickyAreaComponent } from './sticky-area/sticky-area.component';
+import { StickyComponent } from './sticky/sticky.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavBarComponent,
+    StickyAreaComponent,
+    StickyComponent
   ],
   imports: [
     BrowserModule
