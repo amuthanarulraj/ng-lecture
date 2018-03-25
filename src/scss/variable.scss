@@ -1,0 +1,30 @@
+
+/*Font size*/
+
+$sticky-title-font-size: 20px;
+$sticky-content-font-size: 16px;
+
+/*Font Weight*/
+
+$sticky-title-weight: 600;
+$sticky-content-weight: 400;
+
+/*Font Color*/
+
+$nav-bar-color: rgb(29, 173, 118);
+$workspace-color: rgba($nav-bar-color, 0.1);
+$sticky-title-color: #ffffff;
+$sticky-title-background-color: rgba($nav-bar-color, 0.9);
+$sticky-background-color: #ffffff;
+
+/*Sizes*/
+
+$sticky-width: 250px;
+$sticky-height: $sticky-width;
+
+/*Font family*/
+
+$font-sticky-text: 'Lato',
+sans-serif;
+$font-sticky-title: 'Roboto',
+sans-serif;

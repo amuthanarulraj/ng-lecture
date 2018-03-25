@@ -1,0 +1,35 @@
+/*Mixins*/
+
+@mixin filter($filter) {
+    -webkit-filter: $filter;
+    filter: $filter;
+}
+
+@mixin shadow($value) {
+    -webkit-box-shadow: $value;
+    /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+    -moz-box-shadow: $value;
+    /* Firefox 3.5 - 3.6 */
+    box-shadow: $value;
+    /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+}
+
+@mixin round-corners($value) {
+    /* Safari 3-4, iOS 1-3.2, Android 1.6- */
+    -webkit-border-radius: $value;
+    /* Firefox 1-3.6 */
+    -moz-border-radius: $value;
+    /* Opera 10.5, IE 9, Safari 5, Chrome, Firefox 4, iOS 4, Android 2.1+ */
+    border-radius: $value;
+}
+
+@mixin transform($value) {
+    transform: $value;
+    -moz-transform: $value;
+    -webkit-transform: $value;
+}
+
+@mixin transition($value) {
+    transition: $value;
+    -webkit-transition: $value;
+}

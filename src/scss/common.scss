@@ -1,0 +1,16 @@
+/*Class Selectors*/
+
+.pull-right {
+    float: right;
+}
+
+@for $i from 1 through 5 {
+    $paddingSize: 5 + $i * 2;
+    .padding-#{$paddingSize} {
+        padding: #{$paddingSize}px;
+    }
+}
+
+body {
+    background-color: $workspace-color;
+}
