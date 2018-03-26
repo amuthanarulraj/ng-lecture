@@ -29,4 +29,9 @@
         height: $sticky-height;
         width: $sticky-width;
     }
+    .sticky-footer {
+        position: absolute;
+        bottom: 0;
+        color: rgb(207, 209, 211);
+    }
 }
