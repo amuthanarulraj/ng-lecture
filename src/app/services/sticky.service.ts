@@ -14,10 +14,16 @@ export class StickyService {
   stickies: Array<Sticky>;
 
   /**
+   * Id sequence.
+   */
+  idSeq: number;
+
+  /**
    * Constructor.
    */
   constructor() {
     this.stickies = [];
+    this.idSeq = 1;
   }
 
   /**
@@ -36,7 +42,12 @@ export class StickyService {
    * @return {Sticky} {saved sticky object}
    */
   createSticky(sticky: Sticky = null): Sticky {
-    let newSticky: Sticky = sticky ? sticky : new Sticky("Untitled Sticky", "");
+    let idSeq =  this.idSeq,
+        newSticky: Sticky;
+    idSeq += 1;
+    newSticky = sticky ? sticky : new Sticky("Untitled Sticky", "");
+    newSticky.id = idSeq;
+    this.idSeq = idSeq;
     return newSticky;
   }
 }

@@ -1,2 +1,2 @@
-<app-nav-bar></app-nav>
-<app-sticky-area></app-sticky-area>
+<app-nav-bar (newStickyEmitted)="addSticky($event)"></app-nav>
+<app-sticky-area [stickiesChild]="stickiesParent"></app-sticky-area>

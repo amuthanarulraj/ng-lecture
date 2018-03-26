@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { StickyAreaComponent } from './sticky-area/sticky-area.component';
 import { StickyComponent } from './sticky/sticky.component';
+//Services
+import { StickyService } from './services/sticky.service';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,7 @@ import { StickyComponent } from './sticky/sticky.component';
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [ StickyService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

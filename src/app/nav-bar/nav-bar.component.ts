@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { StickyService } from './../services/sticky.service';
+import { Sticky } from './../models/sticky';
 
 @Component({
   selector: 'app-nav-bar',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor() { }
+  @Output() newStickyEmitted = new EventEmitter<Sticky>();
+  stickyService: StickyService;
+
+  constructor(stickyService: StickyService) {
+    this.stickyService = stickyService;
+  }
+
+  createSticky() {
+    let newSticky: Sticky = this.stickyService.createSticky();
+    this.newStickyEmitted.emit(newSticky);
+  }
 
   ngOnInit() {
   }
-
 }
