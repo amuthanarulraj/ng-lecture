@@ -1,6 +1,7 @@
 /*Tag Selectors*/
 @import "./../../scss/variable.scss";
 @import "./../../scss/mixin.scss";
+@import url(https://fonts.googleapis.com/css?family=Roboto);
 nav {
     background-color: $nav-bar-color;
     height: 50px;
@@ -8,6 +9,7 @@ nav {
     margin: 0px 0px 10px 0px;
     a {
         margin-right: 30px;
+        text-decoration: none;
     }
     .add-icon {
         display: block;
@@ -18,5 +20,12 @@ nav {
         &:hover {
             @include transform(rotate(90deg));
         }
+    }
+    .label {
+        font-family: 'Roboto', sans-serif;
+        font-size: 20px;
+        color: rgb(243, 243, 245);
+        margin: 12px;
+        font-weight: bold;
     }
 }

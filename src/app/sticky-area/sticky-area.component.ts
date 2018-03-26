@@ -9,8 +9,15 @@ import { StickyService } from './../services/sticky.service';
 })
 export class StickyAreaComponent implements OnInit {
   @Input() stickiesChild: Array<Sticky>;
+  stickyService: StickyService;
 
-  constructor() { }
+  constructor(stickyService: StickyService) {
+    this.stickyService = stickyService;
+  }
+
+  createSticky() {
+    this.stickiesChild.push(this.stickyService.createSticky())
+  }
 
   ngOnInit() {
   }
