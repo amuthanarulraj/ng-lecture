@@ -1,0 +1,32 @@
+@import "./../../scss/variable.scss";
+@import "./../../scss/mixin.scss";
+@import "./../../scss/common.scss";
+.sticky {
+    display: block;
+    position: absolute;
+    @include shadow(1px 1px 2px 2px #C6D0D3);
+    @include round-corners(5px);
+    .sticky-title {
+        @extend .padding-7;
+        @include round-corners(5px 5px 0px 0px);
+        font-family: $font-sticky-title;
+        font-size: $sticky-title-font-size;
+        font-weight: $sticky-title-weight;
+        text-align: center;
+        color: $sticky-title-color;
+        background-color: $sticky-title-background-color;
+        height: 25px;
+        width: $sticky-width;
+    }
+    .sticky-content {
+        @extend .padding-7;
+        @include round-corners(0px 0px 5px 5px);
+        font-family: $font-sticky-text;
+        font-size: $sticky-content-font-size;
+        font-weight: $sticky-content-weight;
+        text-align: left;
+        background-color: $sticky-background-color;
+        height: $sticky-height;
+        width: $sticky-width;
+    }
+}
