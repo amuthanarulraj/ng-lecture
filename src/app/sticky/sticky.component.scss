@@ -2,8 +2,9 @@
 @import "./../../scss/mixin.scss";
 @import "./../../scss/common.scss";
 .sticky {
-    display: block;
+    display: relative;
     position: absolute;
+    width: $sticky-width;
     @include shadow(1px 1px 2px 2px #C6D0D3);
     @include round-corners(5px);
     .sticky-title {

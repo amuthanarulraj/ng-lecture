@@ -1,7 +1,5 @@
-<div [class.sticky]="classObject.sticky" [style.top.px]="styleObject.top" [style.left.px]="styleObject.left">
-    <div class="sticky-title" [attr.name]="sticky.title" contenteditable="true">{{sticky.title}}</div>
-    <div class="sticky-content" contenteditable="true">
-        {{sticky.content}}
-    </div>
-    <div class="sticky-footer">Created on: {{sticky.createdDate | date}}</div>
+<div id="{{'sticky-' + sticky.id}}" [class.sticky]="classObject.sticky" [style.top.px]="styleObject.top" [style.left.px]="styleObject.left">
+    <input type="text" class="sticky-title" [attr.name]="sticky.title" [(ngModel)]="sticky.title">
+    <input type="text" class="sticky-content" [value]="sticky.content" (input)="sticky.content=$event.target.value">
+    <div class="sticky-footer">{{sticky.title}} Created on: {{sticky.createdDate | date:'shortDate'}} with content {{sticky.content}}</div>
 </div>
