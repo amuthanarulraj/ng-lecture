@@ -29,9 +29,11 @@
         background-color: $sticky-background-color;
         height: $sticky-height;
         width: $sticky-width;
+        border: none;
     }
     .sticky-footer {
         position: absolute;
+        padding: 5px;
         bottom: 0;
         color: rgb(207, 209, 211);
     }
