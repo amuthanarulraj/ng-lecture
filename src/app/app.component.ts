@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Sticky } from './models/sticky';
 import { StickyService } from './services/sticky.service';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,10 @@ export class AppComponent {
   stickiesParent: Array<Sticky>;
 
   constructor(stickyService: StickyService) {
-    this.stickiesParent = stickyService.getStickies();
+    let stickiesObservable: Observable<Sticky[]> = stickyService.getStickies();
+    stickiesObservable.subscribe(stickies => {
+      this.stickiesParent = stickies;
+    });
   }
 
   addSticky(sticky: Sticky) {

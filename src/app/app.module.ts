@@ -1,6 +1,7 @@
 //Modules
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 //Components
 import { AppComponent } from './app.component';
@@ -19,7 +20,8 @@ import { StickyService } from './services/sticky.service';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [ StickyService ],
   bootstrap: [AppComponent]

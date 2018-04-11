@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Sticky } from './../models/sticky';
 import { StickyService } from './../services/sticky.service';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-sticky-area',
@@ -16,7 +17,10 @@ export class StickyAreaComponent implements OnInit {
   }
 
   createSticky() {
-    this.stickiesChild.push(this.stickyService.createSticky())
+    let newStickyObservable: Observable<Sticky> = this.stickyService.createSticky();
+    newStickyObservable.subscribe(newSticky => {
+      this.stickiesChild.push(newSticky);
+    })
   }
 
   ngOnInit() {

@@ -2,6 +2,7 @@ import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 import { StickyService } from './../services/sticky.service';
 import { Sticky } from './../models/sticky';
 import { StickyAreaComponent } from '../sticky-area/sticky-area.component';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-nav-bar',
@@ -18,8 +19,10 @@ export class NavBarComponent implements OnInit {
   }
 
   createSticky() {
-    let newSticky: Sticky = this.stickyService.createSticky();
-    this.newStickyEmitted.emit(newSticky);
+    let newStickyObservable: Observable<Sticky> = this.stickyService.createSticky();
+    newStickyObservable.subscribe(newSticky => {
+      this.newStickyEmitted.emit(newSticky);
+    });
   }
 
   ngOnInit() {

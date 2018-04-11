@@ -1,53 +1,42 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Sticky } from './../models/sticky';
+
+import { AppConstants } from './../common/app-constants';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class StickyService {
 
-  /**
-   * Array of stickies.
-   *
-   * @property
-   * @private
-   */
-  stickies: Array<Sticky>;
-
-  /**
-   * Id sequence.
-   */
-  idSeq: number;
+  stickyResource: string;
+  stickyResourceURL: string;
 
   /**
    * Constructor.
    */
-  constructor() {
-    this.stickies = [];
-    this.idSeq = 1;
+  constructor(private http: HttpClient) {
+    this.stickyResource = 'stickies';
+    this.stickyResourceURL = `${AppConstants.STICKY_SERVER_BASE_URL}/${this.stickyResource}`;
   }
 
   /**
    * Returns all stickies.
    *
-   * @return {Array} {Array of stickies}
+   * @return {Observable} {Observable sticky array of stickies}
    */
-  getStickies(): Array<Sticky> {
-    return this.stickies;
+  getStickies(): Observable<Sticky[]> {
+    return this.http.get<Array<Sticky>>(this.stickyResourceURL);
   }
 
   /**
    * Creates new sticky.
    *
    * @param  {Sticky} sticky: Sticky {new sticky object}
-   * @return {Sticky} {saved sticky object}
+   * @return {Observable} {Observable for saved sticky object}
    */
-  createSticky(sticky: Sticky = null): Sticky {
-    let idSeq =  this.idSeq,
-        newSticky: Sticky;
-    idSeq += 1;
+  createSticky(sticky: Sticky = null): Observable<Sticky> {
+    let newSticky: Sticky;
     newSticky = sticky ? sticky : new Sticky("Untitled Sticky", "");
-    newSticky.id = idSeq;
-    this.idSeq = idSeq;
-    return newSticky;
+    return this.http.post<Sticky>(this.stickyResourceURL, newSticky);
   }
 }
