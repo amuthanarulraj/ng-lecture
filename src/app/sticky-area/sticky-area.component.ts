@@ -17,10 +17,10 @@ export class StickyAreaComponent implements OnInit {
   }
 
   createSticky() {
-    let newStickyObservable: Observable<Sticky> = this.stickyService.createSticky();
-    newStickyObservable.subscribe(newSticky => {
+    let newSticky$: Observable<Sticky> = this.stickyService.createSticky();
+    newSticky$.subscribe(newSticky => {
       this.stickiesChild.push(newSticky);
-    })
+    });
   }
 
   ngOnInit() {

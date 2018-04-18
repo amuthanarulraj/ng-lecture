@@ -13,8 +13,8 @@ export class AppComponent {
   stickiesParent: Array<Sticky>;
 
   constructor(stickyService: StickyService) {
-    let stickiesObservable: Observable<Sticky[]> = stickyService.getStickies();
-    stickiesObservable.subscribe(stickies => {
+    let stickies$: Observable<Array<Sticky>> = stickyService.getStickies();
+    stickies$.subscribe(stickies => {
       this.stickiesParent = stickies;
     });
   }
