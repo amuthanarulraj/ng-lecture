@@ -22,7 +22,7 @@ export class StickyService {
   /**
    * Returns all stickies.
    *
-   * @return {Observable} {Observable array of stickies}
+   * @return {Observable} {Observable sticky array of stickies}
    */
   getStickies(): Observable<Array<Sticky>> {
     return this.http.get<Array<Sticky>>(this.stickyResourceURL);
