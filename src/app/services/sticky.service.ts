@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Sticky } from './../models/sticky';
 
 import { AppConstants } from './../common/app-constants';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class StickyService {

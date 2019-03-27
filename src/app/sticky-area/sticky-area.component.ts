@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Sticky } from './../models/sticky';
 import { StickyService } from './../services/sticky.service';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-sticky-area',

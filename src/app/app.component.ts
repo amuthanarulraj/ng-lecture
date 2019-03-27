@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Sticky } from './models/sticky';
 import { StickyService } from './services/sticky.service';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
