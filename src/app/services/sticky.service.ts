@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Sticky } from './../models/sticky';
 
-import { AppConstants } from './../common/app-constants';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class StickyService {
@@ -16,7 +16,7 @@ export class StickyService {
    */
   constructor(private http: HttpClient) {
     this.stickyResource = 'stickies';
-    this.stickyResourceURL = `${AppConstants.STICKY_SERVER_BASE_URL}/${this.stickyResource}`;
+    this.stickyResourceURL = `${environment.serverBaseURL}/${this.stickyResource}`;
   }
 
   /**
@@ -36,7 +36,7 @@ export class StickyService {
    */
   createSticky(sticky: Sticky = null): Observable<Sticky> {
     let newSticky: Sticky;
-    newSticky = sticky ? sticky : new Sticky("Untitled Sticky", "");
+    newSticky = sticky ? sticky : new Sticky('Untitled Sticky', '');
     return this.http.post<Sticky>(this.stickyResourceURL, newSticky);
   }
 }
