@@ -6,6 +6,9 @@ export function reducer(state: StickyState = [], action: StickyActions): StickyS
     case StickyActionType.ADD_STICKY:
       state.push(action.payload);
       return state;
+    case StickyActionType.ADD_MANY_STICKIES:
+      state.push(...action.payload);
+      return state;
     default:
       return state;
   }
