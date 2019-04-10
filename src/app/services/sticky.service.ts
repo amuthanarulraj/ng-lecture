@@ -8,6 +8,7 @@ import { take, concatMap } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { Store, select } from '@ngrx/store';
 import { AppState } from '../store/state';
+import { findSticky } from '../store/selectors/sticky.selectors';
 
 @Injectable()
 export class StickyService {
@@ -32,34 +33,17 @@ export class StickyService {
    * @return {Observable} {Observable sticky array of stickies}
    */
   public getStickies(): Observable<Array<Sticky>> {
-    const stickies$: Observable<Array<Sticky>> = this.fetchStickiesFromStore().pipe(
-      concatMap((result: Array<Sticky>) => {
-        if (result.length <= 0) {
-          return this.fetchStickiesFromAPI();
-        }
-        return stickies$;
-      })
-    );
-
-    return stickies$;
-  }
-
-  private fetchStickiesFromAPI(): Observable<Array<Sticky>> {
-    const stickies$: Observable<Array<Sticky>> = this.http.get<Array<Sticky>>(this.stickyResourceURL);
-    stickies$.pipe(
-      concatMap((result: Array<Sticky>) => {
-        this.loadStickiesIntoStore(result);
-        return this.fetchStickiesFromStore();
-      })
-    );
-    return this.http.get<Array<Sticky>>(this.stickyResourceURL);
-  }
-
-  private fetchStickiesFromStore(): Observable<Array<Sticky>> {
     const stickies$: Observable<Array<Sticky>> = this.store.pipe(
       select('stickies')
     );
     return stickies$;
+  }
+
+  public loadStickies(): void {
+    const stickies$: Observable<Array<Sticky>> = this.http.get<Array<Sticky>>(this.stickyResourceURL);
+    stickies$.subscribe(stickies => {
+      this.loadStickiesIntoStore(stickies);
+    });
   }
 
   private loadStickiesIntoStore(stickies: Array<Sticky>): void {

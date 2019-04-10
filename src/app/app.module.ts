@@ -15,6 +15,8 @@ import { Sticky } from './models/sticky';
 // Store
 import { StoreModule } from '@ngrx/store';
 import { reducers } from './store/reducers';
+import { environment } from '../environments/environment';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 
 @NgModule({
@@ -29,6 +31,7 @@ import { reducers } from './store/reducers';
     FormsModule,
     HttpClientModule,
     StoreModule.forRoot(reducers, { }),
+    !environment.production ? StoreDevtoolsModule.instrument({ name: 'Sticky Dev Tools'}) : []
   ],
   providers: [ StickyService ],
   bootstrap: [AppComponent],
