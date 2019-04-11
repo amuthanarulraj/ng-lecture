@@ -8,7 +8,6 @@ import { take, concatMap } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { Store, select } from '@ngrx/store';
 import { AppState } from '../store/state';
-import { findSticky } from '../store/selectors/sticky.selectors';
 
 @Injectable()
 export class StickyService {

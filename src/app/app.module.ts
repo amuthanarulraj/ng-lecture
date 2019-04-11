@@ -2,6 +2,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { Routes, RouterModule } from '@angular/router';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 // Components
 import { AppComponent } from './app.component';
@@ -18,6 +19,13 @@ import { reducers } from './store/reducers';
 import { environment } from '../environments/environment';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
+const routes: Routes = [
+  {
+    path: '',
+    component: StickyAreaComponent
+  },
+  { path: ':id', component: StickyComponent }
+];
 
 @NgModule({
   declarations: [
@@ -31,6 +39,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     FormsModule,
     HttpClientModule,
     StoreModule.forRoot(reducers, { }),
+    RouterModule.forRoot(routes),
     !environment.production ? StoreDevtoolsModule.instrument({ name: 'Sticky Dev Tools'}) : []
   ],
   providers: [ StickyService ],

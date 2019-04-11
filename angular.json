@@ -69,6 +69,7 @@
             "karmaConfig": "./karma.conf.js",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.spec.json",
+            "codeCoverage": true,
             "scripts": [],
             "styles": [
               "src/scss/main.scss"

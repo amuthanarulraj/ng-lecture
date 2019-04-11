@@ -2,4 +2,4 @@
     <input type="text" class="sticky-title" [attr.name]="sticky.title" [(ngModel)]="sticky.title">
     <textarea type="text" class="sticky-content" [value]="sticky.content" (input)="sticky.content=$event.target.value"></textarea>
     <div class="sticky-footer">{{sticky.title}} Created on: {{sticky.createdDate | date:'shortDate'}} with content {{sticky.content}}</div>
-</div>
+</div> 
