@@ -7,11 +7,11 @@ export const add = createAction(
 );
 
 export const addMany = createAction(
-  '[Sticky] Update Sticky',
+  '[Sticky] Add Many Sticky',
   props<{ stickies: Sticky[]}>()
 );
 
 export const update = createAction(
-  '[Sticky] Add Many Stickies',
+  '[Sticky] Update Sticky',
   props<{ sticky: Sticky}>()
 );

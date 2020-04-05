@@ -3,11 +3,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Sticky } from './../models/sticky';
 
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { take, concatMap } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { Store, select } from '@ngrx/store';
 import { AppState } from '../store/state';
+import { findSticky } from '../store/selectors/sticky.selectors';
 
 @Injectable()
 export class StickyService {
@@ -36,6 +37,13 @@ export class StickyService {
       select('stickies')
     );
     return stickies$;
+  }
+
+  public getSticky(id: String): Observable<Sticky> {
+    const sticky$: Observable<Sticky> = this.store.pipe(
+      select(findSticky, { id })
+    );
+    return sticky$;
   }
 
   public loadStickies(): void {

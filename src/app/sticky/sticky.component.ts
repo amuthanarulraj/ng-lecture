@@ -1,5 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Sticky } from './../models/sticky';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { StickyService } from '../services/sticky.service';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-sticky',
@@ -12,10 +15,27 @@ export class StickyComponent implements OnInit {
   classObject: Object = {
     sticky: true ? 'sticky': ''
   };
-  styleObject: Object;
+  styleObject: {top: number, left: number};
+
+  constructor(private route: ActivatedRoute, private stickyService: StickyService) {
+
+  }
 
   ngOnInit() {
-    this.styleObject = this.getStickyPosition();
+    const sticky = this.sticky;
+    if(!sticky) {
+      this.route.paramMap.pipe(
+        switchMap((params: ParamMap) => {
+          return this.stickyService.getSticky(params.get('id'));
+        })
+      )
+      .subscribe((item: Sticky) => {
+        this.sticky = item;
+        this.styleObject = this.getStickyPosition();
+      });
+    } else {
+      this.styleObject = this.getStickyPosition();
+    }
   }
 
   /**
@@ -25,7 +45,7 @@ export class StickyComponent implements OnInit {
    * @return {Object} {Object with random top & left}
    * @public
    */
-  getStickyPosition(): Object {
+  getStickyPosition(): {top: number, left: number} {
     let stickySize: number = 250, //Width & Height of the sticky
         topPadding: number = 20, //Padding around nav bar
         vPadding: number = 10, //Padding on both left and right end of the screen

@@ -15,7 +15,9 @@ export class StickyAreaComponent implements OnInit {
 
   ngOnInit() {
     this.stickyService.getStickies()
-      .subscribe(stickies => this.stickies = stickies);
+      .subscribe(stickies => {
+        this.stickies = stickies;
+      });
   }
 
 }
