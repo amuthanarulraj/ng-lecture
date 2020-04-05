@@ -1,4 +1,4 @@
-import { AddManyStickiesAction, AddStickyAction } from './../store/actions/sticky.actions';
+import { add as addSticky, addMany as addManyStickies } from './../store/actions/sticky.actions';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Sticky } from './../models/sticky';
@@ -46,11 +46,11 @@ export class StickyService {
   }
 
   private loadStickiesIntoStore(stickies: Array<Sticky>): void {
-    this.store.dispatch(new AddManyStickiesAction(stickies));
+    this.store.dispatch(addManyStickies({stickies}));
   }
 
   private loadStickyIntoStore(sticky: Sticky): void {
-    this.store.dispatch(new AddStickyAction(sticky));
+    this.store.dispatch(addSticky({sticky}));
   }
 
   /**

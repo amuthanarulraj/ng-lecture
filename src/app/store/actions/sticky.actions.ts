@@ -1,31 +1,17 @@
 import { Sticky } from './../../models/sticky';
-import { Action } from '@ngrx/store';
+import { createAction, props } from '@ngrx/store';
 
-export enum StickyActionType {
-  ADD_STICKY = '[Sticky] Add Sticky',
-  UPDATE_STICKY = '[Sticky] Update Sticky',
-  ADD_MANY_STICKIES = '[Sticky] Add Many Stickies'
-}
+export const add = createAction(
+  '[Sticky] Add Sticky',
+  props<{ sticky: Sticky}>()
+);
 
-export class AddStickyAction implements Action {
+export const addMany = createAction(
+  '[Sticky] Update Sticky',
+  props<{ stickies: Sticky[]}>()
+);
 
-  readonly type = StickyActionType.ADD_STICKY;
-
-  constructor(public payload: Sticky) { }
-}
-
-export class AddManyStickiesAction implements Action {
-
-  readonly type = StickyActionType.ADD_MANY_STICKIES;
-
-  constructor(public payload: Sticky[]) { }
-}
-
-export class UpdateStickyAction implements Action {
-
-  readonly type = StickyActionType.UPDATE_STICKY;
-
-  constructor(public payload: Sticky) {}
-}
-
-export type StickyActions = AddStickyAction | UpdateStickyAction | AddManyStickiesAction;
+export const update = createAction(
+  '[Sticky] Add Many Stickies',
+  props<{ sticky: Sticky}>()
+);

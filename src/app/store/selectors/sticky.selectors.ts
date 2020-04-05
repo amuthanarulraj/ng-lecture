@@ -1,8 +1,12 @@
 import { createSelector } from '@ngrx/store';
 import { Sticky } from '../../models/sticky';
+import { AppState } from '../state';
+
+export const stickiesFeature = (state: AppState) => state.stickies;
 
 export const findSticky = createSelector(
-    (stickies: Sticky[], props: { id: number}) => {
-        return stickies.find(sticky => sticky.id === props.id);
-    }
-)
+  stickiesFeature,
+  (stickies: Sticky[], props: { id: number}) => {
+    return stickies.find(sticky => sticky.id === props.id);
+  }
+);
