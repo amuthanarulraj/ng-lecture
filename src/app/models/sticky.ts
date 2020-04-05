@@ -1,5 +1,5 @@
 export class Sticky {
-    id: Number;
+    id: string;
     title: string;
     content: string;
     createdDate: Date;

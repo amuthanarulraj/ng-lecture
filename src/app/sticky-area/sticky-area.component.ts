@@ -9,21 +9,15 @@ import { Observable } from 'rxjs';
   styleUrls: ['./sticky-area.component.scss']
 })
 export class StickyAreaComponent implements OnInit {
-  @Input() stickiesChild: Array<Sticky>;
-  stickyService: StickyService;
+  stickies: Array<Sticky>;
 
-  constructor(stickyService: StickyService) {
-    this.stickyService = stickyService;
-  }
-
-  createSticky() {
-    let newSticky$: Observable<Sticky> = this.stickyService.createSticky();
-    newSticky$.subscribe(newSticky => {
-      this.stickiesChild.push(newSticky);
-    });
-  }
+  constructor(private stickyService: StickyService) {}
 
   ngOnInit() {
+    this.stickyService.getStickies()
+      .subscribe(stickies => {
+        this.stickies = stickies;
+      });
   }
 
 }

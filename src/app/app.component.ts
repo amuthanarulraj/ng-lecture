@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Sticky } from './models/sticky';
 import { StickyService } from './services/sticky.service';
 import { Observable } from 'rxjs';
@@ -8,18 +8,12 @@ import { Observable } from 'rxjs';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
-  stickiesParent: Array<Sticky>;
-
-  constructor(stickyService: StickyService) {
-    let stickies$: Observable<Array<Sticky>> = stickyService.getStickies();
-    stickies$.subscribe(stickies => {
-      this.stickiesParent = stickies;
-    });
+  constructor(private stickyService: StickyService) {
   }
 
-  addSticky(sticky: Sticky) {
-    this.stickiesParent.push(sticky);
+  ngOnInit() {
+    this.stickyService.loadStickies();
   }
 }

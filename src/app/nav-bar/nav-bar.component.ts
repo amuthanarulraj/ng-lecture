@@ -10,19 +10,11 @@ import { Observable } from 'rxjs';
   styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent implements OnInit {
-  @Input() stickyAreaComponent: StickyAreaComponent
-  @Output() newStickyEmitted = new EventEmitter<Sticky>();
-  stickyService: StickyService;
 
-  constructor(stickyService: StickyService) {
-    this.stickyService = stickyService;
-  }
+  constructor(private stickyService: StickyService) {}
 
   createSticky() {
-    let newSticky$: Observable<Sticky> = this.stickyService.createSticky();
-    newSticky$.subscribe(newSticky => {
-      this.newStickyEmitted.emit(newSticky);
-    });
+    this.stickyService.createSticky();
   }
 
   ngOnInit() {

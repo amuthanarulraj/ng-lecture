@@ -1,11 +1,11 @@
 <!-- Local Reference #navbar -->
 <nav #navbar id="nav-bar" class="nav">
-  <label class="label pull-left">Event Based</label>
+  <label class="label pull-left">{{ "app.component.interaction.event.based" | translate }}</label>
   <a #eventAnchor id="{{navbar.id + '-add-anchor-event'}}" href="#" (click)="createSticky()" class="pull-left">
     <img id="{{eventAnchor.id + '-image'}}" class="add-icon" src="assets/images/ic_add_black_24px.svg" alt="Add Sticky">
   </a>
-  <a #componentAnchor id="{{navbar.id + '-add-anchor-component'}}" href="#" (click)="stickyAreaComponent.createSticky()" class="pull-right">
+  <a #componentAnchor id="{{navbar.id + '-add-anchor-component'}}" href="#" (click)="createSticky()" class="pull-right">
     <img id="{{componentAnchor.id + '-image'}}" class="add-icon" src="assets/images/ic_add_black_24px.svg" alt="Add Sticky">
   </a>
-  <label class="label pull-right">Input Based</label>
+  <label class="label pull-right">{{ "app.component.interaction.input.based" | translate }}</label>
 </nav>
